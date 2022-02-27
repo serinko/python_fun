@@ -31,6 +31,7 @@ class Dice:
         if y <= 1:
             print("\n")
         else:
+            y = (y + 1)
             x = randrange(1, y)
         return x
 
