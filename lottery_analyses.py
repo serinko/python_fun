@@ -68,7 +68,9 @@ while sorted(guess) != sorted(lottery):
         x = choice(pool)
         lottery.append(str(x))
     count += 1  # variable will increment every loop iteration
-    print(f"Draw number {count} - YOU LOST!")
+    lottery_formatted = ' - '.join(lottery)
+    print(
+        f"Draw number {count}; lottery draw:  {lottery_formatted}. ")
 
 print(
     f"\n------------------------\nYOU FINALLY WON!!!"
