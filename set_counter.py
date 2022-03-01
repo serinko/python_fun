@@ -113,7 +113,7 @@ class Counter:
         print("\n\n\n\n\n\n\n\n")
         print("==============================================================")
         print(
-            f"Ready to do your {self.sets} sets of {self.excercise.upper()}")
+            f"Ready to do your {self.sets} sets of {self.excercise.upper()}?")
         count = 0
         prompt = "\n\nPress ENTER to start."
         input(prompt)
