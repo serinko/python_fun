@@ -61,29 +61,43 @@ class Counter:
 
         self.sets = input(prompt_sets)
 
+        try:
+            a = int(self.sets)
+            print('Variable is integer')
+        except:
+            print('variable is not an integer')
+
         for x in range(1, 3):
-            if not self.sets or int(self.sets) == 0:
+            try:
+                a = int(self.sets)
+                if a < 1:
+                    print(
+                        "\n\nNumber of sets was not defined!."
+                    )
+                    a = input(prompt_sets)
+            except:
                 print(
                     "\n\nNumber of sets was not defined!."
                 )
-            self.sets = input(prompt_sets)
-            self.sets = int(self.sets)
+                self.sets = input(prompt_sets)
 
-        if not self.sets or int(self.sets) == 0:
-            print(
-                "\n\n\n\n   ======\n\nYou failed to add a reasonable number. "
-                "It may be better you don't excercise today."
-                "\n\nTry again tomorrow!"
-            )
-            quit()
+            try:
+                a = int(self.sets)
+            except:
+                print(
+                    "\n\n\n\n   ======\n\nYou failed to add a reasonable number. "
+                    "It may be better you don't excercise today."
+                    "\n\nTry again tomorrow!"
+                )
+                quit()
 
-        elif self.sets == 1:
+        if int(self.sets) == 1:
             print(
                 "Do you really need a set counter for 1 set?"
                 "\nAre you sure, you are OK to excercise?"
             )
 
-        elif self.sets > 10:
+        elif int(self.sets) > 10:
             print(
                 f"The number of sets was set to {self.sets}. "
                 f"That's a lot. Don't forget to keep the form."
