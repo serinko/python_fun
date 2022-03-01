@@ -33,7 +33,7 @@ class Counter:
             "\nPlease enter the excercise you want to keep a track of: "
         self.excercise = input(prompt_excercise)
 
-        for x in range(3):
+        for x in range(1, 3):
             if not self.excercise:
                 print(
                     "\n\nYour excercise was not defined."
@@ -50,7 +50,7 @@ class Counter:
 
         else:
             print(
-                f"\nThank you. {self.excercise.title()} added."
+                f"\nThank you. {self.excercise.title()} added!"
             )
 
     def user_input_sets(self):
@@ -62,9 +62,36 @@ class Counter:
         self.sets = input(prompt_sets)
         self.sets = int(self.sets)
 
+        for x in range(1, 3):
+            if not self.sets or self.sets == 0:
+                print(
+                    "\n\nNumber of sets was not defined!."
+                )
+            self.sets = input(sets)
+            self.sets = int(self.sets)
+
+        if not self.sets or self.sets == 0:
+            print(
+                "\n\n\n\n   ======\n\nYou failed to add a reasonable number. "
+                "It may be better you don't excercise today."
+                "\n\nTry again tomorrow!"
+            )
+            quit()
+
+        elif self.sets == 1:
+            print(
+                "Do you really need a set counter for 1 set?"
+                "\nAre you sure, you are OK to excercise?"
+            )
+            
+        else:
+            print(
+                f"\nThank you. {self.excercise.title()} added."
+            )
+
     def counter(self):
         """Loops through the sets and prints a counting report every loop"""
-     
+
 
 athlete = Counter()
 athlete.welcome_message()
