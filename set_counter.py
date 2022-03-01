@@ -83,7 +83,13 @@ class Counter:
                 "Do you really need a set counter for 1 set?"
                 "\nAre you sure, you are OK to excercise?"
             )
-            
+
+        elif self.sets > 10:
+            print(
+                f"The number of sets was set to {self.sets}. "
+                f"That's a lot. Don't forget to keep the form."
+            )
+
         else:
             print(
                 f"\nThank you. {self.excercise.title()} added."
