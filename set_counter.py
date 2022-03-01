@@ -61,12 +61,6 @@ class Counter:
 
         self.sets = input(prompt_sets)
 
-        try:
-            a = int(self.sets)
-            print('Variable is integer')
-        except:
-            print('variable is not an integer')
-
         for x in range(1, 3):
             try:
                 a = int(self.sets)
@@ -84,19 +78,13 @@ class Counter:
         try:
             a = int(self.sets)
             if a < 1:
-                print(
-                    "\n\n\n\n\t\t"
-                    "======\n\nYou failed to add a reasonable number. "
-                    "It may be better you don't excercise today."
-                    "\n\nTry again tomorrow!"
-                )
-
                 quit()
 
 
         except:
             print(
-                "\n\n\n\n   ======\n\nYou failed to add a reasonable number. "
+                "\n\n\n\n\t\t"
+                "======\n\nYou failed to add a reasonable number. "
                 "It may be better you don't excercise today."
                 "\n\nTry again tomorrow!"
             )
