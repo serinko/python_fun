@@ -38,7 +38,7 @@ class Counter:
                 print(
                     "\n\nYour excercise was not defined."
                 )
-            self.excercise = input(prompt_excercise)
+                aaself.excercise = input(prompt_excercise)
 
         if not self.excercise:
             print(
@@ -67,7 +67,7 @@ class Counter:
                 print(
                     "\n\nNumber of sets was not defined!."
                 )
-            self.sets = input(sets)
+            self.sets = input(self.sets)
             self.sets = int(self.sets)
 
         if not self.sets or self.sets == 0:
@@ -102,4 +102,5 @@ class Counter:
 athlete = Counter()
 athlete.welcome_message()
 athlete.user_input_excercise()
+athlete.user_input_sets()
 athlete.counter()
