@@ -62,7 +62,7 @@ class Counter:
         self.sets = input(prompt_sets)
 
         for x in range(1, 3):
-            if not self.sets or self.sets == 0:
+            if not self.sets or int(self.sets) == 0:
                 print(
                     "\n\nNumber of sets was not defined!."
                 )
