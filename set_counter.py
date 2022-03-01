@@ -1,6 +1,5 @@
 """A simple counter tracking your excercising sets"""
 
-
 # TODO:
 # Prompt user to enter name of the excercises
 # Promt user how many sets they want to do
@@ -9,6 +8,7 @@
 # Make a counter based on enter hits
 # Print each round count
 # Print stop message
+import select
 
 
 class Counter:
@@ -104,11 +104,32 @@ class Counter:
 
         else:
             print(
-                f"\nThank you. {self.excercise.title()} added."
+                f"\nThank you. {self.sets} number added."
             )
 
     def counter(self):
         """Loops through the sets and prints a counting report every loop"""
+
+        print("\n\n\n\n\n\n\n\n")
+        print("==============================================================")
+        print(
+            f"Ready to do your {self.sets} sets of {self.excercise.upper()}")
+        count = 0
+        prompt = "\n\nPress ENTER to start."
+        input(prompt)
+        while count < int(self.sets):
+            print(f"\n\n\nSETS FINISHED:   {count}/{self.sets}")
+
+            count += 1
+            print(
+                f"\nCURRENT SET:     # {count}"
+                f" of {self.sets} total"
+            )
+            input("PRESS ENTER WHEN SET FINISHED!")
+
+        print(f"\n\n\n ======================================================"
+              f"\n\nFINISHED!! - {count}/{self.sets} sets!"
+              f"\nCONGRATULATION ! ! !  ")
 
 
 athlete = Counter()
