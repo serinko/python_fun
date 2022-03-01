@@ -38,7 +38,7 @@ class Counter:
                 print(
                     "\n\nYour excercise was not defined."
                 )
-                aaself.excercise = input(prompt_excercise)
+                self.excercise = input(prompt_excercise)
 
         if not self.excercise:
             print(
