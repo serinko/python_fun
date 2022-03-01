@@ -60,17 +60,16 @@ class Counter:
             "\nWhat is the target number of your sets today: "
 
         self.sets = input(prompt_sets)
-        self.sets = int(self.sets)
 
         for x in range(1, 3):
             if not self.sets or self.sets == 0:
                 print(
                     "\n\nNumber of sets was not defined!."
                 )
-            self.sets = input(self.sets)
+            self.sets = input(prompt_sets)
             self.sets = int(self.sets)
 
-        if not self.sets or self.sets == 0:
+        if not self.sets or int(self.sets) == 0:
             print(
                 "\n\n\n\n   ======\n\nYou failed to add a reasonable number. "
                 "It may be better you don't excercise today."
