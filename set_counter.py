@@ -81,15 +81,26 @@ class Counter:
                 )
                 self.sets = input(prompt_sets)
 
-            try:
-                a = int(self.sets)
-            except:
+        try:
+            a = int(self.sets)
+            if a < 1:
                 print(
-                    "\n\n\n\n   ======\n\nYou failed to add a reasonable number. "
+                    "\n\n\n\n\t\t"
+                    "======\n\nYou failed to add a reasonable number. "
                     "It may be better you don't excercise today."
                     "\n\nTry again tomorrow!"
                 )
+
                 quit()
+
+
+        except:
+            print(
+                "\n\n\n\n   ======\n\nYou failed to add a reasonable number. "
+                "It may be better you don't excercise today."
+                "\n\nTry again tomorrow!"
+            )
+            quit()
 
         if int(self.sets) == 1:
             print(
