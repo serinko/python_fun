@@ -1,5 +1,6 @@
 """A simple counter tracking your excercising sets"""
 
+
 # TODO:
 # Prompt user to enter name of the excercises
 # Promt user how many sets they want to do
@@ -8,3 +9,64 @@
 # Make a counter based on enter hits
 # Print each round count
 # Print stop message
+
+
+class Counter:
+    """A simple attempt to modelate a counter"""
+
+    def __init__(self, excercise='', sets=None):
+        """Initialize attributes in the given class"""
+        self.excercise = excercise
+        self.sets = sets
+
+    def welcome_message(self):
+        """Displays a welcome message"""
+        welcome_message = \
+            "\nHello.\nGood to see you excercise today. \
+            \nThis simple program will keep track of your sets."
+        print(welcome_message)
+
+    def user_input_excercise(self):
+        """Prompt user to input excercise"""
+
+        prompt_excercise = \
+            "\nPlease enter the excercise you want to keep a track of: "
+        self.excercise = input(prompt_excercise)
+
+        for x in range(3):
+            if not self.excercise:
+                print(
+                    "\n\nYour excercise was not defined."
+                )
+            self.excercise = input(prompt_excercise)
+
+        if not self.excercise:
+            print(
+                "\n\n\n\n   ======\n\nYou failed to add an excercise. "
+                "It may be better you don't excercise today."
+                "\n\nTry again tomorrow!"
+            )
+            quit()
+
+        else:
+            print(
+                f"\nThank you. {self.excercise.title()} added."
+            )
+
+    def user_input_sets(self):
+        """Prompt user to input number of sets"""
+
+        prompt_sets = \
+            "\nWhat is the target number of your sets today: "
+
+        self.sets = input(prompt_sets)
+        self.sets = int(self.sets)
+
+    def counter(self):
+        """Loops through the sets and prints a counting report every loop"""
+     
+
+athlete = Counter()
+athlete.welcome_message()
+athlete.user_input_excercise()
+athlete.counter()
