@@ -1,4 +1,4 @@
-"""SE if your birthday is in Pi number"""
+"""See if your birthday is in Pi number"""
 
 filename = 'pi_milion_decimals.txt'
 with open(
@@ -20,4 +20,3 @@ if birthday in pi_string:
 
 else:
     print("\nIt seems it does not. Have a great day")
-   
