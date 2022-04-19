@@ -48,6 +48,7 @@ submission_dicts_sorted = sorted(
     key=itemgetter('comments'),
     reverse=True,
 )
+max_comments = int(submission_dicts_sorted[0]['comments'])
 
 for dict in submission_dicts_sorted:
     comment = dict['comments']
@@ -64,7 +65,10 @@ data = [{
     'y': comments,
     'hovertext': titles_links,
     'marker': {
-        'color': 'rgb(60,100,150)',
+        'cmax': max_comments,
+        'cmin': 0,
+        'color': comments,
+        'colorscale': 'Viridis',
         'line': {
             'width': 1.5,
             'color': 'rgb(25,25,25)',
@@ -75,14 +79,15 @@ data = [{
 
 my_layout = {
     'title': f'Most-commented articles on Hacker News',
+    'template': 'plotly_dark',
     'titlefont': {'size': 30},
     'xaxis': {
-        'title': 'Repository',
+        'title': 'Article',
         'titlefont': {'size': 24},
         'tickfont': {'size': 14},
     },
     'yaxis': {
-        'title': 'Stars',
+        'title': 'Comments',
         'titlefont': {'size': 24},
         'tickfont': {'size': 14},
     }
