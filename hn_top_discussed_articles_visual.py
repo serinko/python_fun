@@ -1,10 +1,4 @@
-"""An easily changeable template for Hacker News API"""
-
-# Stores the articles on most-commented basis
-# Change the keys in sorted() to get another values
-# Change bottom print keys for those of your interest
-# More info how to work with H.N. API on: https://github.com/HackerNews/API/
-
+"""An up to date graph of the most commented articles on Hacker-News."""
 
 from operator import itemgetter
 import requests
