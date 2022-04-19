@@ -35,6 +35,9 @@ for repo_dict in repo_dicts:
     label = f"{owner}<br />{decription}"
     labels.append(label)
 
+# Defining the top rating limit for cmax in colorscale
+stars_max = int(repo_dicts[0]['stargazers_count'])
+
 # Make visualisation
 data = [{
     'type': 'bar',
@@ -42,10 +45,13 @@ data = [{
     'y': stars,
     'hovertext': labels,
     'marker': {
-        'color': 'rgb(60,100,150)',
+        'cmax': stars_max,
+        'cmin': 0,
+        'color': stars,
+        'colorscale': 'Plasma',
         'line': {
             'width': 1.5,
-            'color': 'rgb(25,25,25)',
+            'color': 'white',
         },
     },
     'opacity': 0.6,
@@ -53,6 +59,7 @@ data = [{
 
 my_layout = {
     'title': 'Most-Starred Python Projects on Github',
+    'template': 'plotly_dark',
     'titlefont': {'size': 30},
     'xaxis': {
         'title': 'Repository',
