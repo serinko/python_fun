@@ -12,13 +12,24 @@ start_session = ("Starts new session called 'one':","\n$ tmux new -s one\n"
 ls_sessions = ("Shows all sessions:","\n$ tmux ls\n$ tmux list-sessions"\
     "\n[Ctrl]+[b] .. [s]")
 
-sessions = [intro, session, run, run_new, start_session, ls_sessions]
+
 
 window = ("\nTMUX WINDOWS:\n----------\n",)
-new_w = ("Starts new window with the name 'one' and window 'onewindow':",
-         "\n$ tmux new -s one -n onewindow")
+new_w = ("Starts new window with the name\n 'one' and window 'onewindow':",
+         "\n$ tmux new -s one -n onewindow\n")
+crt_w = ("Create window:","[Ctrl]+[b] .. [c]")
 
-windows = [window,new_w]
+table = [
+    intro,
+    session,
+    run,
+    run_new,
+    start_session,
+    ls_sessions,
+    window,
+    new_w,
+    crt_w
+]
 
-print(tabulate(sessions),tabulate(windows))
+print(tabulate(table))
 
