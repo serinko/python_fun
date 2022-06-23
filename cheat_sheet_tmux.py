@@ -1,6 +1,6 @@
 from tabulate import tabulate
 
-intro = ("Comman explanation:\n","$ = Bash terminal command\n: = Tmux command\n"\
+intro = ("\n\nComman explanation:\n","$ = Bash terminal command\n: = Tmux command\n"\
     "[KEY] = shortcut Tmux")
 
 session = ("TMUX SESSIONS:\n----------\n",)
@@ -13,5 +13,6 @@ ls_sessions = ("Shows all sessions:","\n$ tmux ls\n$ tmux list-sessions"\
 
 sessions = [session, run, run_new, start_session, ls_sessions]
 
+print(intro)
 print(tabulate(sessions))
 
