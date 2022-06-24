@@ -12,11 +12,6 @@ start_session = ("Starts new session called 'one':","\n$ tmux new -s one\n"
 ls_sessions = ("Shows all sessions:","\n$ tmux ls\n$ tmux list-sessions"\
     "\n[Ctrl]+[b] .. [s]")
 
-
-
-
-
-
 window = ("\nTMUX WINDOWS:\n----------\n",)
 new_w = ("Starts new window with the name\n 'one' and window 'onewindow':",
          "\n$ tmux new -s one -n onewindow\n")
