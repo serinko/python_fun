@@ -34,3 +34,5 @@ table = [
     new_w,
     crt_w
 ]
+
+print(tabulate(table))
