@@ -29,8 +29,8 @@ table = [
     ls_sessions,
     window,
     new_w,
-    nxt_w,
     crt_w,
+    nxt_w,
     swt_w
 ]
 
