@@ -17,6 +17,7 @@ new_w = ("Starts new window with the name\n 'one' and window 'onewindow':",
          "\n$ tmux new -s one -n onewindow\n")
 crt_w = ("Create window:","[Ctrl]+[b] .. [c]")
 
+swt_w = ("Switch / select window by number:","[Ctrl]+[b] .. [0-9 numbers]")
 
 table = [
     intro,
@@ -27,7 +28,8 @@ table = [
     ls_sessions,
     window,
     new_w,
-    crt_w
+    crt_w,
+    swt_w
 ]
 
 print(tabulate(table))
