@@ -32,9 +32,9 @@ table = [
     ls_sessions,
     window,
     new_w,
+    crt_w,
     rnm_w,
     cls_w,
-    crt_w,
     prv_w,
     nxt_w,
     swt_w
