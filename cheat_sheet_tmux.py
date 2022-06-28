@@ -15,6 +15,9 @@ ls_sessions = ("Shows all sessions:","\n$ tmux ls\n$ tmux list-sessions"\
 window = ("\nTMUX WINDOWS:\n----------\n",)
 new_w = ("Starts new window with the name\n 'one' and window 'onewindow':",
          "\n$ tmux new -s one -n onewindow\n")
+rnm_w = ("Rename current window:","[Ctrl]+[b] .. [,]")
+cls_w = ("Close current window:","[Ctrl]+[b] .. [&]")
+prv_w = ("Previous window:","[Ctrl]+[b] .. [p]")
 nxt_w = ("Next window:","[Ctrl]+[b] .. [n]")
 crt_w = ("Create window:","[Ctrl]+[b] .. [c]")
 
@@ -29,7 +32,10 @@ table = [
     ls_sessions,
     window,
     new_w,
+    rnm_w,
+    cls_w,
     crt_w,
+    prv_w,
     nxt_w,
     swt_w
 ]
