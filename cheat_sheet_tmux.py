@@ -23,6 +23,22 @@ crt_w = ("Create window:","[Ctrl]+[b] .. [c]")
 swt_w = ("Switch / select window by number:","[Ctrl]+[b] .. [0-9 numbers]")
 
 pane = ("\nTMUX PANES:\n----------\n",)
+tgl_lst = ("Toggle last active pane:","[Ctrl]+[b] .. [;]")
+splt_hrzn = ("Split pane with horizontal layout:","[Ctrl]+[b] .. [%]")
+splt_vrt = ("Split pane with vertical layout:",'[Ctrl]+[b] .. ["]')
+swt_pn = ("Switch to pane to the direction:","[Ctrl]+[b] .. [arrow_key]")
+mv_pn_l = ("Move the current pane left:","[Ctrl]+[b] .. [{]")
+mv_pn_r = ("Move the current pane left:","[Ctrl]+[b] .. [}]")
+pn_n = ("Show pane numbers:","[Ctrl]+[b] .. [q]")
+swt_pn_n = ("Switch pane by number:","[Ctrl]+[b] .. [q] [0-9 numbers]")
+tg_pn_z = ("Toggle pane zoom:","[Ctrl]+[b] .. [z]")
+pn_win = ("Convert pane into a window:","[Ctrl]+[b] .. [!]")
+rs_pn = ("Resize current pane:","[Ctrl]+[b]+[arrow_key]")
+tg_pn_lo = ("Toggle between pane layouts:","[Ctrl]+[b] .. [space]")
+sw_nx_pn = ("Switch to next pane","[Ctrl]+[b] .. [0]")
+cl_pn = ("Close current pane:","[Ctrl]+[b] .. [x]")
+
+
 
 table = [
     intro,
@@ -40,7 +56,7 @@ table = [
     nxt_w,
     swt_w,
     pane,
-    
+
 ]
 
 print(tabulate(table))
