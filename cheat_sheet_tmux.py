@@ -4,6 +4,8 @@ intro = ("\n\nCOMMAND EXPLANATION:\n"
          ,"\n$ = Bash terminal command\n: = Tmux command\n"
     "[KEY] = shortcut Tmux")
 
+line = ("-----------------------------------",)
+
 session = ("\nTMUX SESSIONS:\n----------\n",)
 run = ("Run tmux:\n","$ tmux")
 run_new = ("Start new session:\n", "$ tmux new\n$ tmux new-session\n: new")
@@ -42,11 +44,13 @@ cl_pn = ("Close current pane:","[Ctrl]+[b] .. [x]")
 
 table = [
     intro,
+    line,
     session,
     run,
     run_new,
     start_session,
     ls_sessions,
+    line,
     window,
     new_w,
     crt_w,
@@ -55,6 +59,7 @@ table = [
     prv_w,
     nxt_w,
     swt_w,
+    line,
     pane,
     tgl_lst,
     splt_hrzn,
