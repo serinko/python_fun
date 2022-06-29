@@ -56,6 +56,21 @@ table = [
     nxt_w,
     swt_w,
     pane,
+    tgl_lst,
+    splt_hrzn,
+    splt_vrt,
+    swt_pn,
+    mv_pn_l,
+    mv_pn_r,
+    pn_n,
+    swt_pn_n,
+    tg_pn_z,
+    pn_win,
+    rs_pn,
+    tg_pn_lo,
+    sw_nx_pn,
+    cl_pn,
+
 
 ]
 
