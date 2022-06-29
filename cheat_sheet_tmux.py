@@ -20,8 +20,9 @@ cls_w = ("Close current window:","[Ctrl]+[b] .. [&]")
 prv_w = ("Previous window:","[Ctrl]+[b] .. [p]")
 nxt_w = ("Next window:","[Ctrl]+[b] .. [n]")
 crt_w = ("Create window:","[Ctrl]+[b] .. [c]")
-
 swt_w = ("Switch / select window by number:","[Ctrl]+[b] .. [0-9 numbers]")
+
+pane = ("\nTMUX PANES:\n----------\n",)
 
 table = [
     intro,
@@ -37,7 +38,9 @@ table = [
     cls_w,
     prv_w,
     nxt_w,
-    swt_w
+    swt_w,
+    pane,
+    
 ]
 
 print(tabulate(table))
