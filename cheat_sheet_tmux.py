@@ -63,7 +63,13 @@ cl_s = ("Clear selection:","[Esc]")
 co_s = ("Copy selection:","[Enter]")
 ps_bf = ("Paste contents of buffer_0:","[Ctrl]+[b] .. []]")
 ds_bf_c = ("Display buffer_0 contents:",": show-buffer")
-
+cp_v_bf = ("Copy entire visible contents of pane to a buffer:",
+           ": capture-pane")
+sh_bf = ("Show all buffers:",": list-buffers")
+sh_ps = ("Show all buffers and paste selected:",
+         ": choose-buffer")
+sv_bf = ("Save buffer contents to buf.xt:",": save-buffer buf.txt")
+dl_bf = ("Delete buffer_1:",": delete-buffer -b 1")
 
 table = [
     intro,
