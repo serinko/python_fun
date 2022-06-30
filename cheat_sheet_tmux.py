@@ -41,8 +41,21 @@ sw_nx_pn = ("Switch to next pane","[Ctrl]+[b] .. [0]")
 cl_pn = ("Close current pane:","[Ctrl]+[b] .. [x]")
 
 copy = ("\nCOPY MODE:\n----------\n",)
-
-
+cp_md = ("Enter copy mode:","[Ctrl]+[b] .. [[]")
+cp_scr_pgup = ("Enter copy mode and scroll one page up:","[Ctrl]+[b] .. [PgUp]")
+q_m = ("Quit mode:","[q]")
+g_tl = ("Go to top line:","[g]")
+g_bl = ("Go to bottom line:","[G]")
+scr_up = ("Scroll up:","[arrow_up]")
+scr_dw = ("Scroll down:","[arrow_down]")
+mv_c_l = ("Move cursor left:","[h]")
+mv_c_d = ("Move cursor down:","[j]")
+mv_c_u = ("Move cursor up:","[k]")
+mv_c_r = ("Move cursor right:","[l]")
+mv_c_f = ("Move cursor forward one word at a time:","[w]")
+mv_c_b = ("Move cursor backward one word at a time:","[b]")
+sr_f = ("Serach forward:","[/]")
+sr_b = ("Serach backward:","[?]")
 
 table = [
     intro,
@@ -79,7 +92,7 @@ table = [
     cl_pn,
     line,
     copy,
-    
+
 
 
 ]
