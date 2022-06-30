@@ -56,6 +56,14 @@ mv_c_f = ("Move cursor forward one word at a time:","[w]")
 mv_c_b = ("Move cursor backward one word at a time:","[b]")
 sr_f = ("Serach forward:","[/]")
 sr_b = ("Serach backward:","[?]")
+n_k_o = ("Next keyward occurance:","[n]")
+p_k_o = ("Previous keyward occurance:","[N]")
+s_s = ("Start selection:","[Space]")
+cl_s = ("Clear selection:","[Esc]")
+co_s = ("Copy selection:","[Enter]")
+ps_bf = ("Paste contents of buffer_0:","[Ctrl]+[b] .. []]")
+ds_bf_c = ("Display buffer_0 contents:",": show-buffer")
+
 
 table = [
     intro,
