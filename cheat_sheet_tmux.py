@@ -40,6 +40,8 @@ tg_pn_lo = ("Toggle between pane layouts:","[Ctrl]+[b] .. [space]")
 sw_nx_pn = ("Switch to next pane","[Ctrl]+[b] .. [0]")
 cl_pn = ("Close current pane:","[Ctrl]+[b] .. [x]")
 
+copy = ("\nCOPY MODE:\n----------\n",)
+
 
 
 table = [
@@ -75,6 +77,9 @@ table = [
     tg_pn_lo,
     sw_nx_pn,
     cl_pn,
+    line,
+    copy,
+    
 
 
 ]
