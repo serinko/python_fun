@@ -106,9 +106,33 @@ table = [
     cl_pn,
     line,
     copy,
-
-
-
+    cp_md,
+    cp_scr_pgup,
+    q_m,
+    g_tl,
+    g_bl,
+    scr_up,
+    scr_dw,
+    mv_c_l,
+    mv_c_d,
+    mv_c_u,
+    mv_c_r,
+    mv_c_f,
+    mv_c_b,
+    sr_f,
+    sr_b,
+    n_k_o,
+    p_k_o,
+    s_s,
+    cl_s,
+    co_s,
+    ps_bf,
+    ds_bf_c,
+    cp_v_bf,
+    sh_bf,
+    sh_ps,
+    sv_bf,
+    dl_bf,
 ]
 
 print(tabulate(table))
