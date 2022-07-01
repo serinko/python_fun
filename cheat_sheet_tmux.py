@@ -77,6 +77,11 @@ op_ss = ("Set OPTION for all sessions:",": set -g OPTION:")
 op_wn = ("Set OPTION for all windows:",": setw -g OPTION")
 ms_on = ("Enable mouse mode:",": set mouse on")
 
+hlp = ("\nTMUX HELP:\n----------\n",)
+lst = ("List key bindings(shortcuts):","$ tmux list-keys\n: list-keys"
+                                       "\n[Ctrl]+[b] .. [?]")
+inf = ("Show every session, window, pane, etc... :","$ tmux info")
+
 table = [
     intro,
     cmd,
@@ -147,7 +152,9 @@ table = [
     op_wn,
     ms_on,
     line,
-    
+    hlp,
+    lst,
+    inf
 ]
 
 print(tabulate(table))
