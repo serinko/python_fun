@@ -2,7 +2,7 @@ from tabulate import tabulate
 
 intro = ("\n\nCOMMAND EXPLANATION:\n"
          ,"\n$ = Bash terminal command\n: = Tmux command\n"
-    "[KEY] = shortcut Tmux")
+    "[KEY] = Tmux key-binding")
 
 line = ("-----------------------------------",)
 
@@ -71,8 +71,15 @@ sh_ps = ("Show all buffers and paste selected:",
 sv_bf = ("Save buffer contents to buf.xt:",": save-buffer buf.txt")
 dl_bf = ("Delete buffer_1:",": delete-buffer -b 1")
 
+misc = ("\nTMUX MISC:\n----------\n",)
+cmd = ("Enter command mode:","[Ctrl]+[b] .. [:]")
+op_ss = ("Set OPTION for all sessions:",": set -g OPTION:")
+op_wn = ("Set OPTION for all windows:",": setw -g OPTION")
+ms_on = ("Enable mouse mode:",": set mouse on")
+
 table = [
     intro,
+    cmd,
     line,
     session,
     run,
@@ -133,6 +140,14 @@ table = [
     sh_ps,
     sv_bf,
     dl_bf,
+    line,
+    misc,
+    cmd,
+    op_ss,
+    op_wn,
+    ms_on,
+    line,
+    
 ]
 
 print(tabulate(table))
