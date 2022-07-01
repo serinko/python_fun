@@ -4,7 +4,7 @@ intro = ("\n\nCOMMAND EXPLANATION:\n"
          ,"\n$ = Bash terminal command\n: = Tmux command\n"
     "[KEY] = Tmux key-binding")
 
-line = ("-----------------------------------",)
+line = ("=================================================",)
 
 session = ("\nTMUX SESSIONS:\n----------\n",)
 run = ("Run tmux:\n","$ tmux")
@@ -82,6 +82,13 @@ lst = ("List key bindings(shortcuts):","$ tmux list-keys\n: list-keys"
                                        "\n[Ctrl]+[b] .. [?]")
 inf = ("Show every session, window, pane, etc... :","$ tmux info")
 
+custom = ("\nCUSTOMIZE TMUX:\n----------\n",)
+clrs = ("256 colors to work in Tmux:","- open .bashrc file (usually home dir)"
+                                      "\n- paste to a new line: "
+                                      "'export TERM=screen-256color'"
+                                      "\n- save and close .bashrc"
+                                      "\n- restart Tmux.")
+
 table = [
     intro,
     cmd,
@@ -154,7 +161,10 @@ table = [
     line,
     hlp,
     lst,
-    inf
+    inf,
+    line,
+    custom,
+    clrs,
 ]
 
 print(tabulate(table))
