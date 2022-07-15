@@ -88,9 +88,4 @@ class Activator:
         print(message_2)
 
 
-activator = Activator()
-activator.welcome_message()
-activator.add_users()
-activity = activator.add_activity()
-winner = activator.choice()
-activator.print_results(activity, winner)
+
