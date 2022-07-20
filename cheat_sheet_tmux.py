@@ -13,6 +13,9 @@ start_session = ("Starts new session called 'one':","\n$ tmux new -s one\n"
                                                     ": new -s one")
 ls_sessions = ("Shows all sessions:","\n$ tmux ls\n$ tmux list-sessions"\
     "\n[Ctrl]+[b] .. [s]")
+kll_all_sessions = ("Kill/delete all sessions but current","$ tmux kill-session -a")
+kll_many = ("Kill/delete all but 'one'","$ tmux kill-session -t one")
+
 
 window = ("\nTMUX WINDOWS:\n----------\n",)
 new_w = ("Starts new window with the name\n 'one' and window 'onewindow':",
@@ -23,6 +26,7 @@ prv_w = ("Previous window:","[Ctrl]+[b] .. [p]")
 nxt_w = ("Next window:","[Ctrl]+[b] .. [n]")
 crt_w = ("Create window:","[Ctrl]+[b] .. [c]")
 swt_w = ("Switch / select window by number:","[Ctrl]+[b] .. [0-9 numbers]")
+
 
 pane = ("\nTMUX PANES:\n----------\n",)
 tgl_lst = ("Toggle last active pane:","[Ctrl]+[b] .. [;]")
