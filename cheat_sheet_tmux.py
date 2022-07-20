@@ -102,6 +102,8 @@ table = [
     run_new,
     start_session,
     ls_sessions,
+    kll_all_sessions,
+    kll_many,
     line,
     window,
     new_w,
