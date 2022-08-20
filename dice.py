@@ -10,7 +10,7 @@ class Dice:
 
     def roll_dice(self):
         """A method randomizing the dice roll"""
-        x = randrange(1, 6)
+        x = randrange(1, 7)
         return x
 
     def display_result(self):
