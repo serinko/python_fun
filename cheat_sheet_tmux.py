@@ -1,12 +1,14 @@
 from tabulate import tabulate
+from colorama import Fore, Back, Style
 
-intro = ("\n\nCOMMAND EXPLANATION:\n"
+
+intro = (Fore.MAGENTA + Style.BRIGHT +  "\n\nCOMMAND EXPLANATION:\n" 
          ,"\n$ = Bash terminal command\n: = Tmux command\n"
-    "[KEY] = Tmux key-binding")
+    "[KEY] = Tmux key-binding" + Style.RESET_ALL)
 
 line = ("=================================================",)
 
-session = ("\nTMUX SESSIONS:\n----------\n",)
+session = (Fore.YELLOW + Style.BRIGHT + "\nTMUX SESSIONS:\n----------\n"+ Style.RESET_ALL,)
 run = ("Run tmux:\n","$ tmux")
 run_new = ("Start new session:\n", "$ tmux new\n$ tmux new-session\n: new")
 start_session = ("Starts new session called 'one':","\n$ tmux new -s one\n"
@@ -17,7 +19,7 @@ kll_all_sessions = ("Kill/delete all sessions but current","$ tmux kill-session 
 kll_many = ("Kill/delete all but 'one'","$ tmux kill-session -t one")
 
 
-window = ("\nTMUX WINDOWS:\n----------\n",)
+window = (Fore.YELLOW + Style.BRIGHT + "\nTMUX WINDOWS:\n----------\n" + Style.RESET_ALL,)
 new_w = ("Starts new window with the name\n 'one' and window 'onewindow':",
          "\n$ tmux new -s one -n onewindow\n")
 rnm_w = ("Rename current window:","[Ctrl]+[b] .. [,]")
@@ -28,7 +30,7 @@ crt_w = ("Create window:","[Ctrl]+[b] .. [c]")
 swt_w = ("Switch / select window by number:","[Ctrl]+[b] .. [0-9 numbers]")
 
 
-pane = ("\nTMUX PANES:\n----------\n",)
+pane = (Fore.YELLOW + Style.BRIGHT + "\nTMUX PANES:\n----------\n" + Style.RESET_ALL,)
 tgl_lst = ("Toggle last active pane:","[Ctrl]+[b] .. [;]")
 splt_hrzn = ("Split pane with horizontal layout:","[Ctrl]+[b] .. [%]")
 splt_vrt = ("Split pane with vertical layout:",'[Ctrl]+[b] .. ["]')
@@ -44,7 +46,7 @@ tg_pn_lo = ("Toggle between pane layouts:","[Ctrl]+[b] .. [space]")
 sw_nx_pn = ("Switch to next pane","[Ctrl]+[b] .. [0]")
 cl_pn = ("Close current pane:","[Ctrl]+[b] .. [x]")
 
-copy = ("\nCOPY MODE:\n----------\n",)
+copy = (Fore.YELLOW + Style.BRIGHT + "\nCOPY MODE:\n----------\n" + Style.RESET_ALL,)
 cp_md = ("Enter copy mode:","[Ctrl]+[b] .. [[]")
 cp_scr_pgup = ("Enter copy mode and scroll one page up:","[Ctrl]+[b] .. [PgUp]")
 q_m = ("Quit mode:","[q]")
@@ -75,18 +77,18 @@ sh_ps = ("Show all buffers and paste selected:",
 sv_bf = ("Save buffer contents to buf.xt:",": save-buffer buf.txt")
 dl_bf = ("Delete buffer_1:",": delete-buffer -b 1")
 
-misc = ("\nTMUX MISC:\n----------\n",)
-cmd = ("Enter command mode:","[Ctrl]+[b] .. [:]")
+misc = (Fore.YELLOW + Style.BRIGHT + "\nTMUX MISC:\n----------\n" + Style.RESET_ALL,)
+cmd = (Fore.MAGENTA + Style.BRIGHT + "Enter command mode:","[Ctrl]+[b] .. [:]" + Style.RESET_ALL)
 op_ss = ("Set OPTION for all sessions:",": set -g OPTION:")
 op_wn = ("Set OPTION for all windows:",": setw -g OPTION")
 ms_on = ("Enable mouse mode:",": set mouse on")
 
-hlp = ("\nTMUX HELP:\n----------\n",)
+hlp = (Fore.YELLOW + Style.BRIGHT + "\nTMUX HELP:\n----------\n" + Style.RESET_ALL,)
 lst = ("List key bindings(shortcuts):","$ tmux list-keys\n: list-keys"
                                        "\n[Ctrl]+[b] .. [?]")
 inf = ("Show every session, window, pane, etc... :","$ tmux info")
 
-custom = ("\nCUSTOMIZE TMUX:\n----------\n",)
+custom = (Fore.YELLOW + Style.BRIGHT + "\nCUSTOMIZE TMUX:\n----------\n" + Style.RESET_ALL,)
 clrs = ("256 colors to work in Tmux:","- open .bashrc file (usually home dir)"
                                       "\n- paste to a new line: "
                                       "'export TERM=screen-256color'"
