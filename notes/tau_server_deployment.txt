@@ -1,0 +1,192 @@
+"""
+My notes on deployment of a cmd task manager tau2 by narodnik: https://github.com/narodnik/tau2
+User tau2 client setup in the end.
+This step by step guide to set a server instance is over-explicit. However it expects a user to have a basic understanding of linux user operation, error search etc. Likely to be modified!
+"""
+
+#############################
+### SERVER INSTANCE SETUP ###
+#############################
+
+# get to the server
+## pass your ssh public key to an admin and ask to be added
+## open a new terminal and run
+ssh -i .ssh/[MY_KEY].pub [SERVER]@[IP_ADDRESS]
+
+# Starting on plain Debian
+sudo apt update
+# Adding ssh pub keys for other users access
+nano .ssh/authorized_keys
+
+# Getting basic dependencies
+sudo apt-get install tmux
+sudo apt-get install git
+sudo apt-get install build-essential
+sudo apt-get install python
+
+# Check python version
+python -V
+## if less then 3.x install python3
+sudo apt-get install python3
+## and set python3 as 'python'
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.9 1
+## if the command does not work, echange the last line of /usr/bin/python3.x where x is your python3 version
+## the "1" in the end must stay, thats the rank of python 3 as #1 alternative
+
+# Get pip + more tools
+sudo apt update
+sudo apt install python3-pip
+sudo apt-get install fzf
+sudo apt-get install neovim
+sudo apt-get install weechat
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+mkdir src
+cd src
+git clone https://github.com/rust-lang/cargo
+cd cargo/                                   
+cargo build --release
+source "$HOME/.cargo/env"
+PATH=$PATH:$HOME/.cargo/bin
+## I had problems with cargo and had to restart the shell
+
+# IRCD deployment
+## all basic info in the darkfi book: https://darkrenaissance.github.io/darkfi/misc/ircd/ircd.html
+tmux
+cd ~/src
+git clone https://github.com/darkrenaissance/darkfi/
+cd darkfi
+sh contrib/dependency_setup.sh
+## if problem, run manually
+sudo apt-get install -y git make jq gcc pkg-config openssl-dev
+## not all the dependencies worked, the last one not needed for this setup 
+make BINS="ircd"
+## Had a problem with some libs
+rustup target add wasm32-unknown-unknown
+cargo build --target wasm32-unknown-unknown
+make BINS="ircd"
+sudo make install BINS=ircd
+ircd
+## This only creates ~/.config/darkfi/ircd_congig.toml
+
+# Setting ircd config
+cd ~/.config/darkfi
+nvim ircd_config.toml
+## set the basic settings like on your ircd instance
+## this instance is only for the tau bot so only add the secret channel you need
+## save and exit the config (esc, :x, enter) and run ircd:
+ircd
+
+# Setting up weechat
+## open a new pane <ctrl>+<b> <%> and run weechat
+weechat
+## set weechat to listen to your ircd in weechat text field:
+/set irc.look.temporary_servers on
+/connect localhost/6667
+/connect localhost/6668
+## change your nick
+/nick [NAME]
+##ircd and weechat shall run smooth now, listing the rooms etc
+
+# Tau setup
+## read documentation: https://github.com/narodnik/tau2   
+## open a new tmux window <ctrl><b> <c>
+cd src
+git clone https://github.com/narodnik/tau2
+## get dependencies
+pip3 install tabulate pycryptodome colorama toml
+cd tau2
+## set alias in your .basrhrc, run:
+alias tau=~/src/tau2/client/main.py
+## create a tau config dir and copy config file there
+mkdir ~/.config/tau
+cp ~/src/tau2/tau.sample.toml ~/.config/tau/tau.toml
+## create a secret phrase
+python generate_secret.py
+## copy the string generated
+## find your ip address:
+netstat
+## change tau config
+nvim ~/.config/tau/tau.toml
+## change the secret for the one you generated, chasnge server to the server_ip_address
+## save and exit (esc, :x, enter)
+## Changed few things in the notifying bot:
+cd ~/src/tau2
+nvim /bot/notifier_bot.py
+## line 24: changed default value of a port from 11066 to the one my ircd runs on (in my case 6667)
+## line 26: switched default channel to the one I want to deploy the bot onto
+## save and exit
+## open two more panes in this window
+## (tmux keys: new pane <ctrl><b> <%>, move to next pane <ctrl><b> <arrow>, close pane <ctrl><b> <x>, change windows<ctrl><b> <number>)
+## (tmux help <ctrl><b> <?>)
+## run the server daemon
+python /server/main.py
+## switch to the next empty pane and run tau:
+tau
+## if does not work, repeat:
+alias tau=~/src/tau2/client/main.py
+tau
+## create a test task
+tau add test_task
+## server daemon shall show the command etc
+tau
+## test_task shall be listed there
+## move to the 3rd empty pane and run the bot
+python /bot/notifier_bot.py --nickname [NAME]
+## in case you did not change default channel before, kill the program and specify
+python /bot/notifier_bot.py --nickname [NAME] --channel ["#channel_name"]
+## the channel must be connected in the previously started ircd instance (visible in your weechat in this instance in window 0)
+## in window 1 shall be 3 panes with tau sever daemon, tau cmd-line and running notifier bot
+## use the one with tau to add, edit, delete tasks based on readme in https://github.com/narodnik/tau2
+## they shall reflect on the daemon and be notified in ircd channel connected by the bot
+
+# adding users to the server
+## ask for ssh pub key of a user
+## add to authorized keys
+nvim ~/.ssh/authorized_keys
+## append a key to a new line, save and exit
+
+
+###########################
+### USER - LOCAL CLIENT ###
+###########################
+
+## On some Debian distros is only Python3, the scripts would not work in that case, run:
+sudo apt-get install python
+
+# Check python version
+python -V
+python3 -V
+## if python3.x does not exist, install python3
+sudo apt-get install python3
+## and set python3 as 'python'
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.9 1
+## if the command does not work, echange the last line of /usr/bin/python3.x where x is your python3 version
+## the "1" in the end must stay, thats the rank of python 3 as #1 alternative
+
+# TAU setup
+## read documentation: https://github.com/narodnik/tau2   
+## open a shell or a new tmux window/pane
+mkdir ~/src
+cd ~/src
+git clone https://github.com/narodnik/tau2
+## get dependencies
+pip3 install tabulate pycryptodome colorama toml
+cd tau2
+## set alias in your .basrhrc, run:
+alias tau=~/src/tau2/client/main.py
+## create a tau config dir and copy config file there
+mkdir ~/.config/tau
+cp ~/src/tau2/tau.sample.toml ~/.config/tau/tau.toml
+## edit config
+nvim ~/.config/tau/tau.toml
+## set up the username for your nick in the chat
+## change shared_secret string
+## change server string
+## save and exit (esc, :x, enter)
+
+# Run TAU
+tau
+## in case command does not exist, re-run:
+alias tau=~/src/tau2/client/main.py
+tau
+## follow usage manual: https://github.com/narodnik/tau2
