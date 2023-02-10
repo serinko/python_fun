@@ -39,6 +39,7 @@ sudo apt install python3-pip
 sudo apt-get install fzf
 sudo apt-get install neovim
 sudo apt-get install weechat
+sudo apt-get install curl
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 mkdir src
 cd src
@@ -47,7 +48,8 @@ cd cargo/
 cargo build --release
 source "$HOME/.cargo/env"
 PATH=$PATH:$HOME/.cargo/bin
-## I had problems with cargo and had to restart the shell
+echo "PATH=$PATH:$HOME/.cargo/bin" >> ~/.bashrc
+## If problems with cargo prevail, try to restart the shell
 
 # IRCD deployment
 ## all basic info in the darkfi book: https://darkrenaissance.github.io/darkfi/misc/ircd/ircd.html
@@ -55,9 +57,10 @@ tmux
 cd ~/src
 git clone https://github.com/darkrenaissance/darkfi/
 cd darkfi
-sh contrib/dependency_setup.sh
-## if problem, run manually
+# ircd dependencies:
 sudo apt-get install -y git make jq gcc pkg-config openssl-dev
+# if error occurs (on some debian distros), run:
+sudo apt-get install -y git make jq gcc pkg-config libmpg123-dev
 ## not all the dependencies worked, the last one not needed for this setup 
 make BINS="ircd"
 ## Had a problem with some libs
@@ -80,9 +83,9 @@ ircd
 ## open a new pane <ctrl>+<b> <%> and run weechat
 weechat
 ## set weechat to listen to your ircd in weechat text field:
-/set irc.look.temporary_servers on
-/connect localhost/6667
-/connect localhost/6668
+/server add darkfi localhost/6667 -autoconnect
+/save
+/quit
 ## change your nick
 /nick [NAME]
 ##ircd and weechat shall run smooth now, listing the rooms etc
@@ -111,7 +114,7 @@ nvim ~/.config/tau/tau.toml
 ## save and exit (esc, :x, enter)
 ## Changed few things in the notifying bot:
 cd ~/src/tau2
-nvim /bot/notifier_bot.py
+nvim bot/notifier_bot.py
 ## line 24: changed default value of a port from 11066 to the one my ircd runs on (in my case 6667)
 ## line 26: switched default channel to the one I want to deploy the bot onto
 ## save and exit
@@ -119,11 +122,12 @@ nvim /bot/notifier_bot.py
 ## (tmux keys: new pane <ctrl><b> <%>, move to next pane <ctrl><b> <arrow>, close pane <ctrl><b> <x>, change windows<ctrl><b> <number>)
 ## (tmux help <ctrl><b> <?>)
 ## run the server daemon
-python /server/main.py
+python server/main.py
 ## switch to the next empty pane and run tau:
 tau
 ## if does not work, repeat:
-alias tau=~/src/tau2/client/main.py
+echo "alias tau=~/src/tau2/client/main.py" >> ~/.bashrc
+source ~/.bashrc
 tau
 ## create a test task
 tau add test_task
@@ -131,20 +135,23 @@ tau add test_task
 tau
 ## test_task shall be listed there
 ## move to the 3rd empty pane and run the bot
-python /bot/notifier_bot.py --nickname [NAME]
+python ~/src/tau2/bot/notifier_bot.py --nickname [NAME]
 ## in case you did not change default channel before, kill the program and specify
-python /bot/notifier_bot.py --nickname [NAME] --channel ["#channel_name"]
-## the channel must be connected in the previously started ircd instance (visible in your weechat in this instance in window 0)
-## in window 1 shall be 3 panes with tau sever daemon, tau cmd-line and running notifier bot
+python ~/src/tau2/bot/notifier_bot.py --nickname [NAME] --channel ["#channel_name"]
+## the channel must be connected in the previously started ircd instance (visible in your weechat)
 ## use the one with tau to add, edit, delete tasks based on readme in https://github.com/narodnik/tau2
 ## they shall reflect on the daemon and be notified in ircd channel connected by the bot
 
+###############################
+### ADDING USER TO A SERVER ###
+###############################
+
+# (not needed to add users to the server for them to run tau)
 # adding users to the server
 ## ask for ssh pub key of a user
 ## add to authorized keys
 nvim ~/.ssh/authorized_keys
 ## append a key to a new line, save and exit
-
 
 ###########################
 ### USER - LOCAL CLIENT ###
@@ -184,9 +191,33 @@ nvim ~/.config/tau/tau.toml
 ## change server string
 ## save and exit (esc, :x, enter)
 
-# Run TAU
+###############
+### Run TAU ###
+###############
+
 tau
 ## in case command does not exist, re-run:
 alias tau=~/src/tau2/client/main.py
 tau
 ## follow usage manual: https://github.com/narodnik/tau2
+
+##############################
+### MULTIPLE TAU INSTANCES ###
+##############################
+
+## per-instance create new config file (locally)
+## Chose a name for the second instance (ie tau_b)
+cp ~/.config/tau/tau.toml ~/.config/tau/tau_b.toml
+## chose a username for this instance, add info from the admin (as on the server)
+nvim ~/.config/tau/tau_b.toml
+## save and exit
+## open terminal config (~/.bashrc or ~/.zshrc)
+## under the line alias tau=... add the new command alias and point to the config ie:
+# alias tau_b="TAU_CONFIG=~/.config/tau/tau_b.toml tau"
+## Save and close
+## re-load the source
+source ~/.bashrc (or source ~/.zshrc)
+## run the second instance
+tau_b
+## every command will work same like in "RUN TAU" chapter, except tau command needs to be exchanged for the new command
+
