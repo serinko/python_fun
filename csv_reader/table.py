@@ -10,7 +10,6 @@ import csv
 def create_table(args):
     file = args.file    
     csv = pd.read_csv(file)
-    csv = csv.applymap(lambda x: x.replace('"', ''))
     if args.index:
         table = csv.to_markdown()
     else:
