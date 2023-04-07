@@ -12,7 +12,7 @@
 **Setup**
 
 ```bash
-wget https://github.com/serinko/python_fun/blob/master/csv_read/table.py
+wget https://github.com/serinko/python_fun/blob/master/csv_reader/table.py
 chmod +x table.py
 ```
 
