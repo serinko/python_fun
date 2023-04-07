@@ -5,10 +5,12 @@ import argparse
 import pandas as pd
 import sys
 import pathlib
+import csv
 
 def create_table(args):
     file = args.file    
     csv = pd.read_csv(file)
+    csv = csv.applymap(lambda x: x.replace('"', ''))
     if args.index:
         table = csv.to_markdown()
     else:
@@ -41,7 +43,7 @@ def parser_main():
         
     # Parser arguments    
     parser.add_argument("-V","--version", action="version", version='%(prog)s 1.0.0')
-    parser.add_argument("file",type=pathlib.Path, help="csv file name")
+    parser.add_argument("file", help="csv file name")
     parser.add_argument("-i","--index", default=True, action="store_false", help="Display csv without an index column")
     # possible to change default by: default = False, action="store_true"
     
