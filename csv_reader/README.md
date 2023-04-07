@@ -12,7 +12,7 @@
 **Setup**
 
 ```bash
-https://github.com/serinko/python_fun
+clone https://github.com/serinko/python_fun
 cd python_fun/csv_reader
 chmod +x table.py
 ```
