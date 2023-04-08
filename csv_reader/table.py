@@ -8,6 +8,7 @@ import pathlib
 import csv
 
 def create_table(args):
+    """Imports csv and creates a table"""
     file = args.file    
     csv = pd.read_csv(file)
     if args.index:
@@ -21,22 +22,19 @@ def create_table(args):
         else:
             table = csv.to_markdown(index = False)
     return table
-        
-def import_csv(args):
-    file = args.file
-    csv = pd.read_csv(file)
-    
+      
       
 def display_file(args):
-    """Display csv file as a sorted page or a table"""
+    """Display csv file as a table"""
     table = create_table(args)
-    
     print(table)
+        
         
 def panic(msg):
     """Error message print"""
     print(f"error: {msg}", file=sys.stderr)
     sys.exit(-1)
+
 
 def parser_main():
     """Main function initializing ArgumentParser, storing arguments and executing commands."""    
