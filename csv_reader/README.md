@@ -57,7 +57,7 @@ Q1,January,February,March
 7th,Sunday,Wednesday,Wednesday
 ...
 ```
-Using the script by default 
+Using the script by default `csv {file}`:
 ```bash
 $ csv data/example.csv
 
@@ -73,7 +73,7 @@ $ csv data/example.csv
 |  7 | 8th  | Monday    | Thursday   | Thursday  |
 ...
 ```
-Using the script with tabulate option without index `csv -t -i {file}`
+Using the script with tabulate option without index `csv -t -i {file}`:
 ```bash
  csv -t -i data/example.csv
 +------+-----------+------------+-----------+
