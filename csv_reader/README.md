@@ -37,7 +37,6 @@ Prints with index by default, to display without an index, use:
 
 ```
 csv -i {file.csv}
-
 ```
 
 **Examples**
