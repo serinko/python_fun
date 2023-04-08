@@ -1,4 +1,4 @@
-# CSV READER
+# CSV TERMINAL READER
 
 **Dependencies**
 
