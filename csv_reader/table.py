@@ -11,9 +11,15 @@ def create_table(args):
     file = args.file    
     csv = pd.read_csv(file)
     if args.index:
-        table = csv.to_markdown()
+        if args.table:
+            table = csv.to_markdown(tablefmt="grid")
+        else:
+            table = csv.to_markdown()
     else:
-        table = csv.to_markdown(index = False)
+        if args.table:
+            table = csv.to_markdown(tablefmt="grid", index=False)
+        else:
+            table = csv.to_markdown(index = False)
     return table
         
 def import_csv(args):
@@ -24,6 +30,7 @@ def import_csv(args):
 def display_file(args):
     """Display csv file as a sorted page or a table"""
     table = create_table(args)
+    
     print(table)
         
 def panic(msg):
@@ -41,9 +48,10 @@ def parser_main():
         )
         
     # Parser arguments    
-    parser.add_argument("-V","--version", action="version", version='%(prog)s 1.0.0')
+    parser.add_argument("-V","--version", action="version", version='%(prog)s 1.1.0')
     parser.add_argument("file", help="csv file name")
-    parser.add_argument("-i","--index", default=True, action="store_false", help="Display csv without an index column")
+    parser.add_argument("-t","--table", default=False, action="store_true", help="output with a tabulate option")
+    parser.add_argument("-i","--index", default=True, action="store_false", help="output without an index column")
     # possible to change default by: default = False, action="store_true"
     
     parser.set_defaults(func=display_file)
